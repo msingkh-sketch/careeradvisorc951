@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+  <category>
+    <pattern>HELLO</pattern>
+    <template>
+      Welcome! I am your Professional Career Advisor. I will help you align your interests with a specialized computing path.
+      <br/><br/>
+      Which technical domain best aligns with your career goals?
+      <button><text>Software Development</text><postback>CODING</postback></button>
+      <button><text>Information Security</text><postback>SECURITY</postback></button>
+      <button><text>Data Science &amp; Analytics</text><postback>DATA</postback></button>
+      <button><text>User Interface Design</text><postback>DESIGN</postback></button>
+      <button><text>Database Architecture</text><postback>DATABASES</postback></button>
+    </template>
+  </category>
+
+  <category><pattern>HI</pattern><template><srai>HELLO</srai></template></category>
+  <category><pattern>HEY</pattern><template><srai>HELLO</srai></template></category>
+  <category><pattern>START</pattern><template><srai>HELLO</srai></template></category>
+
+  <category>
+    <pattern>CODING</pattern>
+    <template>
+      <think><set name="interest">Software Development</set></think>
+      Which organizational culture do you prefer?
+      <button><text>Agile Startup (Fast-Paced)</text><postback>STARTUP</postback></button>
+      <button><text>Enterprise/Corporate (Structured)</text><postback>CORPORATE</postback></button>
+    </template>
+  </category>
+
+  <category>
+    <pattern>SECURITY</pattern>
+    <template>
+      <think><set name="interest">Information Security</set></think>
+      Which organizational culture do you prefer?
+      <button><text>Agile Startup (Fast-Paced)</text><postback>STARTUP</postback></button>
+      <button><text>Enterprise/Corporate (Structured)</text><postback>CORPORATE</postback></button>
+    </template>
+  </category>
+
+  <category>
+    <pattern>DATA</pattern>
+    <template>
+      <think><set name="interest">Data Science</set></think>
+      Which organizational culture do you prefer?
+      <button><text>Agile Startup (Fast-Paced)</text><postback>STARTUP</postback></button>
+      <button><text>Enterprise/Corporate (Structured)</text><postback>CORPORATE</postback></button>
+    </template>
+  </category>
+
+  <category>
+    <pattern>DESIGN</pattern>
+    <template>
+      <think><set name="interest">User Interface Design</set></think>
+      Which organizational culture do you prefer?
+      <button><text>Agile Startup (Fast-Paced)</text><postback>STARTUP</postback></button>
+      <button><text>Enterprise/Corporate (Structured)</text><postback>CORPORATE</postback></button>
+    </template>
+  </category>
+
+  <category>
+    <pattern>DATABASES</pattern>
+    <template>
+      <think><set name="interest">Database Architecture</set></think>
+      How do you prefer to approach your daily tasks?
+      <button><text>Independent/Solo Execution</text><postback>SOLO</postback></button>
+      <button><text>Collaborative Teamwork</text><postback>TEAM</postback></button>
+    </template>
+  </category>
+
+  <category>
+    <pattern>STARTUP</pattern>
+    <template>
+      <think><set name="environment">Independent</set></think>
+      How do you prefer to approach your daily tasks?
+      <button><text>Independent/Solo Execution</text><postback>SOLO</postback></button>
+      <button><text>Collaborative Teamwork</text><postback>TEAM</postback></button>
+    </template>
+  </category>
+
+  <category>
+    <pattern>CORPORATE</pattern>
+    <template>
+      <think><set name="environment">Corporate</set></think>
+      How do you prefer to approach your daily tasks?
+      <button><text>Independent/Solo Execution</text><postback>SOLO</postback></button>
+      <button><text>Collaborative Teamwork</text><postback>TEAM</postback></button>
+    </template>
+  </category>
+
+  <category>
+    <pattern>SOLO</pattern>
+    <template>
+      <think><set name="work">Solo</set></think>
+      Which technical strength defines your work best?
+      <button><text>Complex Problem Solving</text><postback>LOGICAL</postback></button>
+      <button><text>Visual Design &amp; Layout</text><postback>CREATIVE</postback></button>
+      <button><text>Pattern Recognition</text><postback>ANALYTICAL</postback></button>
+      <button><text>Risk Assessment</text><postback>PROTECTIVE</postback></button>
+      <button><text>System Organization</text><postback>ORGANIZATIONAL</postback></button>
+    </template>
+  </category>
+
+  <category>
+    <pattern>TEAM</pattern>
+    <template>
+      <think><set name="work">Teamwork</set></think>
+      Which technical strength defines your work best?
+      <button><text>Complex Problem Solving</text><postback>LOGICAL</postback></button>
+      <button><text>Visual Design &amp; Layout</text><postback>CREATIVE</postback></button>
+      <button><text>Pattern Recognition</text><postback>ANALYTICAL</postback></button>
+      <button><text>Risk Assessment</text><postback>PROTECTIVE</postback></button>
+      <button><text>System Organization</text><postback>ORGANIZATIONAL</postback></button>
+    </template>
+  </category>
+
+  <category><pattern>LOGICAL</pattern><template><think><set name="skill">Logical</set></think><srai>FINAL</srai></template></category>
+  <category><pattern>CREATIVE</pattern><template><think><set name="skill">Creative</set></think><srai>FINAL</srai></template></category>
+  <category><pattern>ANALYTICAL</pattern><template><think><set name="skill">Analytical</set></think><srai>FINAL</srai></template></category>
+  <category><pattern>PROTECTIVE</pattern><template><think><set name="skill">Protective</set></think><srai>FINAL</srai></template></category>
+  <category><pattern>ORGANIZATIONAL</pattern><template><think><set name="skill">Organizational</set></think><srai>FINAL</srai></template></category>
+
+  <category>
+    <pattern>FINAL</pattern>
+    <template>
+      <think>
+        <set name="result">IT Specialist</set>
+        <condition name="skill">
+          <li value="logical"><set name="result">Software Developer</set></li>
+          <li value="creative"><set name="result">Web Designer</set></li>
+          <li value="analytical"><set name="result">Data Scientist</set></li>
+          <li value="protective"><set name="result">Cybersecurity Analyst</set></li>
+          <li value="organizational"><set name="result">Database Administrator</set></li>
+        </condition>
+      </think>
+      <b>CAREER ASSESSMENT SUMMARY</b><br/>
+      ==========================<br/>
+      <b>Domain Interest:</b> <get name="interest"/><br/>
+      <b>Workplace Culture:</b> <get name="environment"/><br/>
+      <b>Execution Style:</b> <get name="work"/><br/>
+      <b>Primary Strength:</b> <get name="skill"/><br/>
+      <br/>
+      ==========================<br/>
+      <br/>
+      <b>YOUR BEST CAREER MATCH IS:</b><br/>
+      <b>*** <get name="result"/> ***</b><br/>
+      ==========================<br/>
+      <br/>
+      Want to try again?
+      <button>
+        <text>Restart Evaluation</text>
+        <postback>HELLO</postback>
+      </button>
+    </template>
+  </category>
+
+  <category>
+    <pattern>*</pattern>
+    <template>
+      I didn't quite catch that. Try typing "HELLO", "CODING" ,"DATA"
+      <br/> Or choose an option to start.
+      <br/>
+      <button><text>Start</text><postback>HELLO</postback></button>
+    </template>
+  </category>
+
+</aiml>
